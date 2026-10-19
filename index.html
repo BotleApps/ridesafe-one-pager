@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,262 +7,274 @@
 <meta name="description" content="Ride Safe is a rider-first, multi-brand shop for motorcycle luggage, protection and touring essentials. Built for the long haul. Opening soon." />
 <link rel="icon" type="image/png" href="icon.png" />
 <meta property="og:title" content="Ride Safe — Built for the Long Haul" />
-<meta property="og:description" content="Rider-tested motorcycle luggage, protection and touring gear. Opening soon." />
+<meta property="og:description" content="Rider-tested motorcycle protection, luggage and touring gear. Opening soon." />
 <meta property="og:image" content="logo.png" />
 <meta property="og:type" content="website" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
 <style>
+  /* ===== Theme tokens ===== */
   :root {
-    --black: #121212;
     --orange: #D35400;
+    --orange-soft: #e8732a;
     --green: #39FF14;
-    --white: #FFFFFF;
-    --muted: #a8a8a8;
-    --line: rgba(255, 255, 255, 0.1);
+    --radius: 14px;
+    --maxw: 1080px;
+    --ease: cubic-bezier(0.22, 1, 0.36, 1);
   }
+  [data-theme="dark"] {
+    --bg: #121212;
+    --bg-2: #181818;
+    --surface: rgba(255, 255, 255, 0.03);
+    --surface-hover: rgba(255, 255, 255, 0.06);
+    --text: #ffffff;
+    --muted: #a8a8a8;
+    --faint: #6e6e6e;
+    --line: rgba(255, 255, 255, 0.1);
+    --logo-filter: none;
+    --glow-o: 0.22;
+    --glow-g: 0.05;
+    --hero-grid: rgba(255,255,255,0.025);
+  }
+  [data-theme="light"] {
+    --bg: #f4f1ec;
+    --bg-2: #ffffff;
+    --surface: rgba(18, 18, 18, 0.03);
+    --surface-hover: rgba(18, 18, 18, 0.06);
+    --text: #161616;
+    --muted: #5a5753;
+    --faint: #8f8b85;
+    --line: rgba(18, 18, 18, 0.1);
+    --logo-filter: none;
+    --glow-o: 0.14;
+    --glow-g: 0.04;
+    --hero-grid: rgba(18,18,18,0.03);
+  }
+
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
   body {
-    background: var(--black);
-    color: var(--white);
+    background: var(--bg);
+    color: var(--text);
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
-    line-height: 1.6;
+    line-height: 1.65;
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
+    transition: background 0.4s var(--ease), color 0.4s var(--ease);
   }
-  /* subtle orange glow horizon, evoking golden-hour riding */
+  /* warm horizon glow + faint grid */
   body::before {
     content: "";
-    position: fixed;
-    inset: 0;
+    position: fixed; inset: 0; z-index: 0; pointer-events: none;
     background:
-      radial-gradient(ellipse 120% 60% at 50% 110%, rgba(211, 84, 0, 0.22), transparent 60%),
-      radial-gradient(ellipse 80% 50% at 50% -10%, rgba(57, 255, 20, 0.05), transparent 55%);
-    pointer-events: none;
-    z-index: 0;
-  }
-  h1, h2, h3, .btn, .eyebrow, .badge {
-    font-family: 'Oswald', 'Inter', sans-serif;
-    text-transform: uppercase;
-    letter-spacing: 0.02em;
-  }
-  .wrap {
-    position: relative;
-    z-index: 1;
-    max-width: 960px;
-    margin: 0 auto;
-    padding: 0 24px;
+      radial-gradient(ellipse 130% 65% at 50% 112%, rgba(211,84,0,var(--glow-o)), transparent 62%),
+      radial-gradient(ellipse 80% 50% at 50% -12%, rgba(57,255,20,var(--glow-g)), transparent 55%);
+    transition: opacity 0.4s var(--ease);
   }
 
-  /* ---- Hero ---- */
+  h1, h2, h3, .eyebrow, .badge, .btn, .nav-brand, .stat-num {
+    font-family: 'Poppins', 'Inter', sans-serif;
+  }
+  .wrap { position: relative; z-index: 1; max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
+
+  /* ===== Nav ===== */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 16px 24px;
+    backdrop-filter: blur(10px);
+    background: color-mix(in srgb, var(--bg) 72%, transparent);
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.3s, background 0.4s var(--ease);
+  }
+  nav.scrolled { border-bottom-color: var(--line); }
+  .nav-brand { display: flex; align-items: center; gap: 10px; font-weight: 700; letter-spacing: 0.04em; font-size: 0.95rem; }
+  .nav-brand img { height: 30px; width: auto; }
+  .nav-right { display: flex; align-items: center; gap: 16px; }
+  .nav-coming { font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--green); font-weight: 600; }
+  @media (max-width: 560px){ .nav-coming { display:none; } }
+
+  /* theme toggle */
+  .toggle {
+    position: relative; width: 56px; height: 30px; border-radius: 999px;
+    border: 1px solid var(--line); background: var(--surface);
+    cursor: pointer; display: inline-flex; align-items: center; padding: 0 4px;
+    transition: background 0.3s;
+  }
+  .toggle:hover { background: var(--surface-hover); }
+  .toggle .knob {
+    position: absolute; width: 22px; height: 22px; border-radius: 50%;
+    background: var(--green); left: 4px;
+    display: grid; place-items: center; font-size: 12px; line-height: 1;
+    transition: transform 0.35s var(--ease), background 0.3s;
+  }
+  [data-theme="light"] .toggle .knob { transform: translateX(26px); background: var(--orange); }
+
+  /* ===== Hero ===== */
   .hero {
-    min-height: 100svh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 64px 24px;
+    min-height: 100svh; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; text-align: center;
+    padding: 120px 24px 80px; position: relative;
   }
-  .logo {
-    width: min(620px, 88vw);
-    height: auto;
-    filter: drop-shadow(0 12px 40px rgba(0, 0, 0, 0.6));
-    animation: rise 0.9s ease-out both;
+  .hero-grid {
+    position: absolute; inset: 0; z-index: 0; pointer-events: none;
+    background-image: linear-gradient(var(--hero-grid) 1px, transparent 1px),
+                      linear-gradient(90deg, var(--hero-grid) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse 70% 70% at 50% 40%, #000 30%, transparent 75%);
   }
+  .logo { width: min(640px, 90vw); height: auto; position: relative; z-index: 1; filter: drop-shadow(0 16px 50px rgba(0,0,0,0.5)); }
   .badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    margin-top: 40px;
-    padding: 9px 18px;
-    border: 1px solid var(--green);
-    border-radius: 999px;
-    color: var(--green);
-    font-weight: 600;
-    font-size: 0.78rem;
-    letter-spacing: 0.18em;
-    animation: rise 0.9s ease-out 0.1s both;
+    display: inline-flex; align-items: center; gap: 10px; margin-top: 34px;
+    padding: 9px 18px; border: 1px solid var(--green); border-radius: 999px;
+    color: var(--green); font-weight: 600; font-size: 0.74rem; letter-spacing: 0.18em; text-transform: uppercase;
   }
-  .badge .dot {
-    width: 8px; height: 8px;
-    border-radius: 50%;
-    background: var(--green);
-    box-shadow: 0 0 10px var(--green);
-    animation: pulse 2s ease-in-out infinite;
-  }
-  h1 {
-    margin-top: 28px;
-    font-size: clamp(2.4rem, 7vw, 4.6rem);
-    font-weight: 700;
-    line-height: 1.02;
-    animation: rise 0.9s ease-out 0.2s both;
-  }
+  .badge .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); box-shadow: 0 0 10px var(--green); animation: pulse 2s ease-in-out infinite; }
+  h1 { margin-top: 26px; font-size: clamp(2.5rem, 7.5vw, 5rem); font-weight: 800; line-height: 1.0; letter-spacing: -0.01em; }
   h1 .hl { color: var(--orange); }
-  .sub {
-    margin-top: 20px;
-    max-width: 580px;
-    color: var(--muted);
-    font-size: clamp(1rem, 2.4vw, 1.15rem);
-    animation: rise 0.9s ease-out 0.3s both;
-  }
+  .sub { margin-top: 20px; max-width: 600px; color: var(--muted); font-size: clamp(1rem, 2.4vw, 1.18rem); }
 
-  /* ---- Signup ---- */
-  .signup {
-    margin-top: 40px;
-    width: 100%;
-    max-width: 460px;
-    animation: rise 0.9s ease-out 0.4s both;
-  }
-  .eyebrow {
-    display: block;
-    color: var(--white);
-    font-weight: 600;
-    font-size: 0.82rem;
-    letter-spacing: 0.14em;
-    margin-bottom: 14px;
-  }
-  form {
-    display: flex;
-    gap: 10px;
-  }
+  /* ===== Signup ===== */
+  .signup { margin-top: 38px; width: 100%; max-width: 480px; }
+  .eyebrow { display: block; font-weight: 600; font-size: 0.8rem; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 14px; }
+  form { display: flex; gap: 10px; }
   input[type="email"] {
-    flex: 1;
-    min-width: 0;
-    padding: 15px 18px;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid var(--line);
-    border-radius: 10px;
-    color: var(--white);
-    font-size: 1rem;
-    font-family: inherit;
-    transition: border-color 0.2s;
+    flex: 1; min-width: 0; padding: 15px 18px; background: var(--surface);
+    border: 1px solid var(--line); border-radius: 10px; color: var(--text);
+    font-size: 1rem; font-family: inherit; transition: border-color 0.2s, background 0.2s;
   }
-  input[type="email"]::placeholder { color: #6e6e6e; }
-  input[type="email"]:focus {
-    outline: none;
-    border-color: var(--green);
-  }
+  input[type="email"]::placeholder { color: var(--faint); }
+  input[type="email"]:focus { outline: none; border-color: var(--green); background: var(--surface-hover); }
   .btn {
-    padding: 15px 22px;
-    background: var(--green);
-    color: var(--black);
-    border: none;
-    border-radius: 10px;
-    font-weight: 700;
-    font-size: 0.9rem;
-    cursor: pointer;
-    white-space: nowrap;
-    transition: transform 0.15s, box-shadow 0.2s;
+    padding: 15px 24px; background: var(--green); color: #0c0c0c; border: none;
+    border-radius: 10px; font-weight: 700; font-size: 0.9rem; letter-spacing: 0.02em;
+    text-transform: uppercase; cursor: pointer; white-space: nowrap;
+    transition: transform 0.15s var(--ease), box-shadow 0.25s;
   }
-  .btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(57, 255, 20, 0.3);
-  }
-  .note {
-    margin-top: 12px;
-    font-size: 0.8rem;
-    color: #6e6e6e;
-    min-height: 1.2em;
-    text-align: left;
-    transition: color 0.2s;
-  }
+  .btn:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(57,255,20,0.3); }
+  .btn:active { transform: translateY(0); }
+  .note { margin-top: 12px; font-size: 0.82rem; color: var(--faint); min-height: 1.2em; text-align: left; transition: color 0.2s; }
   .note.ok { color: var(--green); }
-  .note.err { color: var(--orange); }
+  .note.err { color: var(--orange-soft); }
 
-  /* ---- What's coming ---- */
-  .coming {
-    padding: 72px 0 96px;
-    border-top: 1px solid var(--line);
-  }
-  .coming h2 {
-    text-align: center;
-    font-size: clamp(1.5rem, 4vw, 2.1rem);
-    font-weight: 700;
-    margin-bottom: 8px;
-  }
-  .coming .lead {
-    text-align: center;
-    color: var(--muted);
-    max-width: 560px;
-    margin: 0 auto 48px;
-  }
-  .cards {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 18px;
-  }
+  /* scroll cue */
+  .scroll-cue { margin-top: 56px; color: var(--faint); font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; display: flex; flex-direction: column; align-items: center; gap: 8px; }
+  .scroll-cue span { display: block; width: 1px; height: 36px; background: linear-gradient(var(--green), transparent); animation: drop 1.8s ease-in-out infinite; }
+
+  /* ===== Section shell ===== */
+  section.block { padding: 96px 0; position: relative; }
+  .sec-head { text-align: center; max-width: 640px; margin: 0 auto 56px; }
+  .sec-tag { display: inline-block; color: var(--green); font-weight: 600; font-size: 0.74rem; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 14px; font-family: 'Poppins', sans-serif; }
+  h2 { font-size: clamp(1.7rem, 4.5vw, 2.6rem); font-weight: 800; line-height: 1.08; letter-spacing: -0.01em; }
+  h2 .hl { color: var(--orange); }
+  .sec-head p { color: var(--muted); margin-top: 14px; font-size: 1.05rem; }
+
+  /* ===== Stats ===== */
+  .stats { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: var(--bg-2); transition: background 0.4s var(--ease); }
+  .stats .wrap { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; padding-top: 52px; padding-bottom: 52px; }
+  .stat { text-align: center; }
+  .stat-num { font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; line-height: 1; color: var(--orange); }
+  .stat-num.g { color: var(--green); }
+  .stat-label { margin-top: 10px; font-size: 0.82rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+  @media (max-width: 680px){ .stats .wrap { grid-template-columns: repeat(2, 1fr); gap: 36px 20px; } }
+
+  /* ===== Category cards ===== */
+  .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
   .card {
-    padding: 28px 24px;
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid var(--line);
-    border-radius: 14px;
-    transition: transform 0.2s, border-color 0.2s;
+    padding: 34px 28px; background: var(--surface); border: 1px solid var(--line);
+    border-radius: var(--radius); transition: transform 0.3s var(--ease), border-color 0.3s, background 0.3s;
+    position: relative; overflow: hidden;
   }
-  .card:hover { transform: translateY(-4px); border-color: var(--orange); }
-  .card h3 {
-    font-size: 1.15rem;
-    font-weight: 600;
-    margin-bottom: 8px;
+  .card::after {
+    content: ""; position: absolute; left: 0; top: 0; height: 3px; width: 100%;
+    transform: scaleX(0); transform-origin: left; transition: transform 0.4s var(--ease);
   }
-  .card:nth-child(1) h3 { color: var(--orange); }
-  .card:nth-child(2) h3 { color: var(--green); }
-  .card:nth-child(3) h3 { color: var(--white); }
-  .card p { color: var(--muted); font-size: 0.92rem; }
+  .card:nth-child(1)::after { background: var(--green); }
+  .card:nth-child(2)::after { background: var(--orange); }
+  .card:nth-child(3)::after { background: var(--text); }
+  .card:hover { transform: translateY(-6px); background: var(--surface-hover); }
+  .card:hover::after { transform: scaleX(1); }
+  .card .ico { width: 46px; height: 46px; margin-bottom: 18px; display: grid; place-items: center; border-radius: 12px; background: var(--surface-hover); }
+  .card .ico svg { width: 26px; height: 26px; }
+  .card h3 { font-size: 1.3rem; font-weight: 700; margin-bottom: 8px; }
+  .card:nth-child(1) h3 { color: var(--green); }
+  .card:nth-child(2) h3 { color: var(--orange); }
+  .card p { color: var(--muted); font-size: 0.95rem; }
+  .card .tag { display: inline-block; margin-top: 16px; font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--faint); }
 
-  /* ---- Footer ---- */
-  footer {
-    border-top: 1px solid var(--line);
-    padding: 36px 24px;
-    text-align: center;
-  }
-  .manifesto {
-    font-family: 'Oswald', sans-serif;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    font-size: 0.95rem;
-    color: var(--white);
-  }
-  .manifesto .o { color: var(--orange); }
-  .manifesto .g { color: var(--green); }
-  .copyright {
-    margin-top: 14px;
-    font-size: 0.78rem;
-    color: #5a5a5a;
-  }
+  /* ===== Pillars / why ===== */
+  .pillars { display: grid; grid-template-columns: repeat(3,1fr); gap: 40px; }
+  .pillar h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 8px; display: flex; align-items: center; gap: 10px; }
+  .pillar h3 .n { color: var(--orange); font-size: 0.9rem; opacity: 0.6; }
+  .pillar p { color: var(--muted); font-size: 0.95rem; }
 
-  @keyframes rise {
-    from { opacity: 0; transform: translateY(16px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  @keyframes pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.35; }
-  }
+  /* ===== Manifesto ===== */
+  .manifesto-sec { text-align: center; }
+  .manifesto-sec .wrap { max-width: 760px; }
+  .manifesto-sec p { font-family: 'Poppins', sans-serif; font-weight: 500; font-size: clamp(1.3rem, 3.5vw, 2rem); line-height: 1.35; letter-spacing: -0.01em; }
+  .manifesto-sec .end { margin-top: 28px; font-weight: 800; font-size: clamp(1.4rem, 4vw, 2.2rem); }
+  .manifesto-sec .end .o { color: var(--orange); }
+  .manifesto-sec .end .g { color: var(--green); }
+
+  /* ===== Guides preview ===== */
+  .guides { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+  .guide { padding: 22px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); font-weight: 500; transition: border-color 0.3s, transform 0.3s var(--ease); display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+  .guide:hover { border-color: var(--orange); transform: translateX(4px); }
+  .guide .arw { color: var(--green); transition: transform 0.3s var(--ease); }
+  .guide:hover .arw { transform: translateX(4px); }
+
+  /* ===== Footer CTA ===== */
+  .cta-final { text-align: center; }
+  .cta-final h2 { margin-bottom: 18px; }
+  .cta-final .btn { text-decoration: none; display: inline-block; }
+
+  footer { border-top: 1px solid var(--line); padding: 40px 24px; text-align: center; }
+  footer .foot-brand { font-family: 'Poppins', sans-serif; font-weight: 700; letter-spacing: 0.05em; }
+  .copyright { margin-top: 12px; font-size: 0.78rem; color: var(--faint); }
+
+  /* ===== Reveal animation ===== */
+  .reveal { opacity: 0; transform: translateY(26px); transition: opacity 0.7s var(--ease), transform 0.7s var(--ease); }
+  .reveal.in { opacity: 1; transform: none; }
+  .reveal.d1 { transition-delay: 0.08s; }
+  .reveal.d2 { transition-delay: 0.16s; }
+  .reveal.d3 { transition-delay: 0.24s; }
+
+  @keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:0.35;} }
+  @keyframes drop { 0%{transform:translateY(-6px);opacity:0;} 40%{opacity:1;} 100%{transform:translateY(10px);opacity:0;} }
+
   @media (prefers-reduced-motion: reduce) {
-    *, *::before { animation: none !important; }
+    *, *::before, *::after { animation: none !important; }
+    .reveal { opacity: 1; transform: none; transition: none; }
     html { scroll-behavior: auto; }
   }
-  @media (max-width: 620px) {
-    form { flex-direction: column; }
-    .cards { grid-template-columns: 1fr; }
-    .note { text-align: center; }
+  @media (max-width: 760px){
+    .cards, .pillars, .guides { grid-template-columns: 1fr; }
+    section.block { padding: 72px 0; }
   }
+  @media (max-width: 560px){ form { flex-direction: column; } .note { text-align: center; } }
 </style>
 </head>
 <body>
 
+  <nav id="nav">
+    <div class="nav-brand"><img src="icon.png" alt="" aria-hidden="true" />RIDE SAFE</div>
+    <div class="nav-right">
+      <span class="nav-coming">Opening Soon</span>
+      <button class="toggle" id="themeToggle" aria-label="Toggle dark / light theme" title="Toggle theme">
+        <span class="knob" id="knob">🌙</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ===== HERO ===== -->
   <section class="hero">
-    <img class="logo" src="logo.png" alt="Ride Safe — Moto Gear & Accessories" />
-
+    <div class="hero-grid"></div>
+    <img class="logo" id="heroLogo" src="logo.png" alt="Ride Safe — Moto Gear & Accessories" />
     <span class="badge"><span class="dot"></span>Coming Soon</span>
-
     <h1>Built for the <span class="hl">Long Haul.</span></h1>
-
     <p class="sub">
-      A rider-first, multi-brand shop for motorcycle luggage, protection and
+      A rider-first, multi-brand shop for motorcycle protection, luggage and
       touring essentials — selected with real riding experience behind every recommendation.
     </p>
 
@@ -272,62 +284,191 @@
         <input type="email" id="email" placeholder="your@email.com" aria-label="Email address" autocomplete="email" />
         <button class="btn" type="submit">Notify Me</button>
       </form>
-      <p class="note" id="note">We'll email you once when we open. No spam.</p>
+      <p class="note" id="note">We'll email you once when we open. No spam, ever.</p>
+    </div>
+
+    <div class="scroll-cue">Scroll<span></span></div>
+  </section>
+
+  <!-- ===== STATS ===== -->
+  <section class="stats">
+    <div class="wrap">
+      <div class="stat reveal"><div class="stat-num" data-count="13">0</div><div class="stat-label">Years on the road</div></div>
+      <div class="stat reveal d1"><div class="stat-num g" data-count="4">0</div><div class="stat-label">Friends who built it</div></div>
+      <div class="stat reveal d2"><div class="stat-num" data-count="100" data-suffix="k+">0</div><div class="stat-label">Kilometres ridden</div></div>
+      <div class="stat reveal d3"><div class="stat-num g" data-count="100" data-suffix="%">0</div><div class="stat-label">Rider-tested</div></div>
     </div>
   </section>
 
-  <section class="coming">
+  <!-- ===== CATEGORIES (protection first) ===== -->
+  <section class="block">
     <div class="wrap">
-      <h2>Gear up for the journey.</h2>
-      <p class="lead">Three things we're building the shop around — the gear that earns its place on your bike.</p>
+      <div class="sec-head reveal">
+        <span class="sec-tag">Gear up for the journey</span>
+        <h2>Three things that <span class="hl">earn their place</span> on your bike.</h2>
+        <p>We start where it matters most — then everything you need to carry more and stay ready for the unexpected.</p>
+      </div>
       <div class="cards">
-        <div class="card">
+        <div class="card reveal">
+          <div class="ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#39FF14" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3>Protect First</h3>
+          <p>Certified impact armor that moves with you — the kind you'll actually wear on a 10-hour day. Protection isn't optional. Neither is comfort.</p>
+          <span class="tag">Armor · Back · Chest · Knee</span>
+        </div>
+        <div class="card reveal d1">
+          <div class="ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#D35400" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="12" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+          </div>
           <h3>Carry More</h3>
-          <p>Luggage systems built to keep your gear secure through long days and rough roads.</p>
+          <p>Heavy-duty luggage systems built to keep your gear secure through long days and rough roads — soft luggage, hard panniers, waterproof bags.</p>
+          <span class="tag">Panniers · Soft luggage · Tank bags</span>
         </div>
-        <div class="card">
-          <h3>Protect Yourself</h3>
-          <p>Practical riding protection designed for the miles you actually ride.</p>
-        </div>
-        <div class="card">
+        <div class="card reveal d2">
+          <div class="ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+          </div>
           <h3>Stay Ready</h3>
-          <p>Touring essentials for the unexpected parts of the journey.</p>
+          <p>Touring essentials for the unexpected parts of the journey — navigation, hydration, weather protection and the tools that keep you moving.</p>
+          <span class="tag">Navigation · Tools · Weather</span>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- ===== WHY / PILLARS ===== -->
+  <section class="block" style="background:var(--bg-2); border-top:1px solid var(--line); border-bottom:1px solid var(--line); transition: background 0.4s var(--ease);">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="sec-tag">Why Ride Safe</span>
+        <h2>We don't just sell gear. <span class="hl">We ride too.</span></h2>
+        <p>13 years on mountain passes, highways, monsoon roads and rough trails taught us what works — and what to leave at home.</p>
+      </div>
+      <div class="pillars">
+        <div class="pillar reveal"><h3><span class="n">01</span> Rider-Tested</h3><p>Every product is vetted through real road experience — not a spec sheet. Real riders. Real roads. Real recommendations.</p></div>
+        <div class="pillar reveal d1"><h3><span class="n">02</span> Practical</h3><p>Safety must be usable. Luggage must survive real conditions. Utility matters as much as how it looks.</p></div>
+        <div class="pillar reveal d2"><h3><span class="n">03</span> Straight Talk</h3><p>Honest, rider-to-rider advice. If something isn't right for your use case, we'll tell you — no corporate fluff.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== MANIFESTO ===== -->
+  <section class="block manifesto-sec">
+    <div class="wrap reveal">
+      <p>Adventure is freedom. Preparation makes it sustainable. Carry what matters. Protect what matters. Trust what you've chosen — then ride.</p>
+      <p class="end">Ride for the adventure. <span class="o">Ride prepared.</span> <span class="g">Ride Safe.</span></p>
+    </div>
+  </section>
+
+  <!-- ===== GUIDES PREVIEW ===== -->
+  <section class="block" style="background:var(--bg-2); border-top:1px solid var(--line); border-bottom:1px solid var(--line); transition: background 0.4s var(--ease);">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="sec-tag">Before you ride</span>
+        <h2>Guides are coming too.</h2>
+        <p>Useful riding knowledge, not just product promotion. A taste of what we'll publish.</p>
+      </div>
+      <div class="guides">
+        <div class="guide reveal">How to choose motorcycle luggage <span class="arw">→</span></div>
+        <div class="guide reveal d1">Soft vs hard panniers <span class="arw">→</span></div>
+        <div class="guide reveal d2">What protection do you actually need? <span class="arw">→</span></div>
+        <div class="guide reveal">What to carry on a Himalayan trip <span class="arw">→</span></div>
+        <div class="guide reveal d1">Touring gear for monsoon riding <span class="arw">→</span></div>
+        <div class="guide reveal d2">How to pack for a multi-day ride <span class="arw">→</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FINAL CTA ===== -->
+  <section class="block cta-final">
+    <div class="wrap reveal">
+      <span class="sec-tag">Where are you riding next?</span>
+      <h2>The road is waiting.</h2>
+      <p class="sub" style="margin:0 auto 32px;">Join the list and we'll let you know the moment the shop opens.</p>
+      <a class="btn" href="#notify" onclick="document.getElementById('email').focus()">Get Early Access</a>
+    </div>
+  </section>
+
   <footer>
-    <p class="manifesto">Ride for the adventure. <span class="o">Ride prepared.</span> <span class="g">Ride Safe.</span></p>
-    <p class="copyright">© <span id="year"></span> Ride Safe · Moto Gear &amp; Accessories · 13 years on the road</p>
+    <p class="foot-brand">RIDE SAFE · Moto Gear &amp; Accessories</p>
+    <p class="copyright">© <span id="year"></span> Ride Safe · 13 years on the road · Built for the long haul.</p>
   </footer>
 
 <script>
+  // ---- year ----
   document.getElementById('year').textContent = new Date().getFullYear();
 
-  // Email validation — standard, deliberately permissive. Real signup wires to a
-  // provider later; for now we validate + store locally so the form isn't a dead end.
-  function isValidEmail(v) {
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim());
-  }
+  // ---- theme: system pref first, then saved choice ----
+  const root = document.documentElement;
+  const knob = document.getElementById('knob');
+  const saved = localStorage.getItem('ridesafe_theme');
+  const prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+  setTheme(saved || (prefersLight ? 'light' : 'dark'));
 
+  function setTheme(t) {
+    root.setAttribute('data-theme', t);
+    knob.textContent = t === 'light' ? '☀️' : '🌙';
+    localStorage.setItem('ridesafe_theme', t);
+  }
+  document.getElementById('themeToggle').addEventListener('click', () => {
+    setTheme(root.getAttribute('data-theme') === 'light' ? 'dark' : 'light');
+  });
+
+  // ---- nav border on scroll + hero logo parallax ----
+  const nav = document.getElementById('nav');
+  const heroLogo = document.getElementById('heroLogo');
+  let ticking = false;
+  window.addEventListener('scroll', () => {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => {
+      const y = window.scrollY;
+      nav.classList.toggle('scrolled', y > 10);
+      if (y < window.innerHeight) heroLogo.style.transform = `translateY(${y * 0.15}px) scale(${1 - y * 0.0002})`;
+      ticking = false;
+    });
+  }, { passive: true });
+
+  // ---- scroll reveal ----
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // ---- animated stat counters (fire once on reveal) ----
+  function countUp(el) {
+    const target = +el.dataset.count;
+    const suffix = el.dataset.suffix || '';
+    const dur = 1400; const start = performance.now();
+    (function step(now){
+      const p = Math.min((now - start) / dur, 1);
+      const eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.round(target * eased) + suffix;
+      if (p < 1) requestAnimationFrame(step);
+    })(start);
+  }
+  const statIO = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { countUp(e.target); statIO.unobserve(e.target); } });
+  }, { threshold: 0.6 });
+  document.querySelectorAll('.stat-num[data-count]').forEach(el => statIO.observe(el));
+
+  // ---- email signup ----
+  function isValidEmail(v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()); }
   const form = document.getElementById('notify');
   const email = document.getElementById('email');
   const note = document.getElementById('note');
-
-  form.addEventListener('submit', function (e) {
+  form.addEventListener('submit', (e) => {
     e.preventDefault();
-    const v = email.value;
-    if (!isValidEmail(v)) {
+    if (!isValidEmail(email.value)) {
       note.textContent = 'Enter a valid email and we’ll keep you posted.';
-      note.className = 'note err';
-      email.focus();
-      return;
+      note.className = 'note err'; email.focus(); return;
     }
     // ponytail: no backend yet — stash locally, swap for a real endpoint at launch.
     try {
       const list = JSON.parse(localStorage.getItem('ridesafe_notify') || '[]');
-      if (!list.includes(v.trim().toLowerCase())) list.push(v.trim().toLowerCase());
+      const v = email.value.trim().toLowerCase();
+      if (!list.includes(v)) list.push(v);
       localStorage.setItem('ridesafe_notify', JSON.stringify(list));
     } catch (_) {}
     form.reset();
@@ -335,12 +476,12 @@
     note.className = 'note ok';
   });
 
-  // --- self-check (runs only with ?selftest in the URL) ---
+  // ---- self-check: ?selftest ----
   if (location.search.includes('selftest')) {
-    const ok = ['a@b.co', 'rider.one@ride-safe.in'].every(isValidEmail);
-    const bad = ['', 'nope', 'a@b', 'a b@c.com', '@x.com'].every(v => !isValidEmail(v));
-    console.assert(ok && bad, 'email validation self-check FAILED');
-    console.log('selftest:', ok && bad ? 'PASS' : 'FAIL');
+    const good = ['a@b.co','rider.one@ride-safe.in'].every(isValidEmail);
+    const bad  = ['','nope','a@b','a b@c.com','@x.com'].every(v => !isValidEmail(v));
+    console.assert(good && bad, 'email self-check FAILED');
+    console.log('selftest:', good && bad ? 'PASS' : 'FAIL');
   }
 </script>
 </body>

@@ -1,0 +1,108 @@
+- generic [active] [ref=e1]:
+  - navigation [ref=e2]:
+    - generic [ref=e3]: RIDE SAFE
+    - generic [ref=e5]:
+      - generic [ref=e6]: Opening Soon
+      - button "Toggle dark / light theme" [ref=e7] [cursor=pointer]:
+        - generic [ref=e8]: ☀️
+  - generic [ref=e9]:
+    - img "Ride Safe — Moto Gear & Accessories" [ref=e10]
+    - generic [ref=e11]: Coming Soon
+    - heading "Built for the Long Haul." [level=1] [ref=e13]
+    - paragraph [ref=e14]: A rider-first, multi-brand shop for motorcycle protection, luggage and touring essentials — selected with real riding experience behind every recommendation.
+    - generic [ref=e15]:
+      - generic [ref=e16]: Be first on the road
+      - generic [ref=e17]:
+        - textbox "Email address" [ref=e18]:
+          - /placeholder: your@email.com
+        - button "Notify Me" [ref=e19] [cursor=pointer]
+      - paragraph [ref=e20]: We'll email you once when we open. No spam, ever.
+    - generic [ref=e21]: Scroll
+  - generic [ref=e24]:
+    - generic [ref=e25]:
+      - generic [ref=e26]: "0"
+      - generic [ref=e27]: Years on the road
+    - generic [ref=e28]:
+      - generic [ref=e29]: "0"
+      - generic [ref=e30]: Friends who built it
+    - generic [ref=e31]:
+      - generic [ref=e32]: "0"
+      - generic [ref=e33]: Kilometres ridden
+    - generic [ref=e34]:
+      - generic [ref=e35]: "0"
+      - generic [ref=e36]: Rider-tested
+  - generic [ref=e38]:
+    - generic [ref=e39]:
+      - generic [ref=e40]: Gear up for the journey
+      - heading "Three things that earn their place on your bike." [level=2] [ref=e41]
+      - paragraph [ref=e42]: We start where it matters most — then everything you need to carry more and stay ready for the unexpected.
+    - generic [ref=e43]:
+      - generic [ref=e44]:
+        - heading "Protect First" [level=3] [ref=e48]
+        - paragraph [ref=e49]: Certified impact armor that moves with you — the kind you'll actually wear on a 10-hour day. Protection isn't optional. Neither is comfort.
+        - generic [ref=e50]: Armor · Back · Chest · Knee
+      - generic [ref=e51]:
+        - heading "Carry More" [level=3] [ref=e56]
+        - paragraph [ref=e57]: Heavy-duty luggage systems built to keep your gear secure through long days and rough roads — soft luggage, hard panniers, waterproof bags.
+        - generic [ref=e58]: Panniers · Soft luggage · Tank bags
+      - generic [ref=e59]:
+        - heading "Stay Ready" [level=3] [ref=e64]
+        - paragraph [ref=e65]: Touring essentials for the unexpected parts of the journey — navigation, hydration, weather protection and the tools that keep you moving.
+        - generic [ref=e66]: Navigation · Tools · Weather
+  - generic [ref=e68]:
+    - generic [ref=e69]:
+      - generic [ref=e70]: Why Ride Safe
+      - heading "We don't just sell gear. We ride too." [level=2] [ref=e71]
+      - paragraph [ref=e72]: 13 years on mountain passes, highways, monsoon roads and rough trails taught us what works — and what to leave at home.
+    - generic [ref=e73]:
+      - generic [ref=e74]:
+        - heading "01 Rider-Tested" [level=3] [ref=e75]:
+          - generic [ref=e76]: "01"
+          - text: Rider-Tested
+        - paragraph [ref=e77]: Every product is vetted through real road experience — not a spec sheet. Real riders. Real roads. Real recommendations.
+      - generic [ref=e78]:
+        - heading "02 Practical" [level=3] [ref=e79]:
+          - generic [ref=e80]: "02"
+          - text: Practical
+        - paragraph [ref=e81]: Safety must be usable. Luggage must survive real conditions. Utility matters as much as how it looks.
+      - generic [ref=e82]:
+        - heading "03 Straight Talk" [level=3] [ref=e83]:
+          - generic [ref=e84]: "03"
+          - text: Straight Talk
+        - paragraph [ref=e85]: Honest, rider-to-rider advice. If something isn't right for your use case, we'll tell you — no corporate fluff.
+  - generic [ref=e87]:
+    - paragraph [ref=e88]: Adventure is freedom. Preparation makes it sustainable. Carry what matters. Protect what matters. Trust what you've chosen — then ride.
+    - paragraph [ref=e89]: Ride for the adventure. Ride prepared. Ride Safe.
+  - generic [ref=e91]:
+    - generic [ref=e92]:
+      - generic [ref=e93]: Before you ride
+      - heading "Guides are coming too." [level=2] [ref=e94]
+      - paragraph [ref=e95]: Useful riding knowledge, not just product promotion. A taste of what we'll publish.
+    - generic [ref=e96]:
+      - generic [ref=e97]:
+        - text: How to choose motorcycle luggage
+        - generic [ref=e98]: →
+      - generic [ref=e99]:
+        - text: Soft vs hard panniers
+        - generic [ref=e100]: →
+      - generic [ref=e101]:
+        - text: What protection do you actually need?
+        - generic [ref=e102]: →
+      - generic [ref=e103]:
+        - text: What to carry on a Himalayan trip
+        - generic [ref=e104]: →
+      - generic [ref=e105]:
+        - text: Touring gear for monsoon riding
+        - generic [ref=e106]: →
+      - generic [ref=e107]:
+        - text: How to pack for a multi-day ride
+        - generic [ref=e108]: →
+  - generic [ref=e110]:
+    - generic [ref=e111]: Where are you riding next?
+    - heading "The road is waiting." [level=2] [ref=e112]
+    - paragraph [ref=e113]: Join the list and we'll let you know the moment the shop opens.
+    - link "Get Early Access" [ref=e114] [cursor=pointer]:
+      - /url: "#notify"
+  - contentinfo [ref=e115]:
+    - paragraph [ref=e116]: RIDE SAFE · Moto Gear & Accessories
+    - paragraph [ref=e117]: © 2026 Ride Safe · 13 years on the road · Built for the long haul.
