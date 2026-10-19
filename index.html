@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Ride Safe — Moto Gear & Accessories | Coming Soon</title>
+<meta name="description" content="Ride Safe is a rider-first, multi-brand shop for motorcycle luggage, protection and touring essentials. Built for the long haul. Opening soon." />
+<link rel="icon" type="image/png" href="icon.png" />
+<meta property="og:title" content="Ride Safe — Built for the Long Haul" />
+<meta property="og:description" content="Rider-tested motorcycle luggage, protection and touring gear. Opening soon." />
+<meta property="og:image" content="logo.png" />
+<meta property="og:type" content="website" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --black: #121212;
+    --orange: #D35400;
+    --green: #39FF14;
+    --white: #FFFFFF;
+    --muted: #a8a8a8;
+    --line: rgba(255, 255, 255, 0.1);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  /* subtle orange glow horizon, evoking golden-hour riding */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 120% 60% at 50% 110%, rgba(211, 84, 0, 0.22), transparent 60%),
+      radial-gradient(ellipse 80% 50% at 50% -10%, rgba(57, 255, 20, 0.05), transparent 55%);
+    pointer-events: none;
+    z-index: 0;
+  }
+  h1, h2, h3, .btn, .eyebrow, .badge {
+    font-family: 'Oswald', 'Inter', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+  }
+  .wrap {
+    position: relative;
+    z-index: 1;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* ---- Hero ---- */
+  .hero {
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 64px 24px;
+  }
+  .logo {
+    width: min(620px, 88vw);
+    height: auto;
+    filter: drop-shadow(0 12px 40px rgba(0, 0, 0, 0.6));
+    animation: rise 0.9s ease-out both;
+  }
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 40px;
+    padding: 9px 18px;
+    border: 1px solid var(--green);
+    border-radius: 999px;
+    color: var(--green);
+    font-weight: 600;
+    font-size: 0.78rem;
+    letter-spacing: 0.18em;
+    animation: rise 0.9s ease-out 0.1s both;
+  }
+  .badge .dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--green);
+    box-shadow: 0 0 10px var(--green);
+    animation: pulse 2s ease-in-out infinite;
+  }
+  h1 {
+    margin-top: 28px;
+    font-size: clamp(2.4rem, 7vw, 4.6rem);
+    font-weight: 700;
+    line-height: 1.02;
+    animation: rise 0.9s ease-out 0.2s both;
+  }
+  h1 .hl { color: var(--orange); }
+  .sub {
+    margin-top: 20px;
+    max-width: 580px;
+    color: var(--muted);
+    font-size: clamp(1rem, 2.4vw, 1.15rem);
+    animation: rise 0.9s ease-out 0.3s both;
+  }
+
+  /* ---- Signup ---- */
+  .signup {
+    margin-top: 40px;
+    width: 100%;
+    max-width: 460px;
+    animation: rise 0.9s ease-out 0.4s both;
+  }
+  .eyebrow {
+    display: block;
+    color: var(--white);
+    font-weight: 600;
+    font-size: 0.82rem;
+    letter-spacing: 0.14em;
+    margin-bottom: 14px;
+  }
+  form {
+    display: flex;
+    gap: 10px;
+  }
+  input[type="email"] {
+    flex: 1;
+    min-width: 0;
+    padding: 15px 18px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    color: var(--white);
+    font-size: 1rem;
+    font-family: inherit;
+    transition: border-color 0.2s;
+  }
+  input[type="email"]::placeholder { color: #6e6e6e; }
+  input[type="email"]:focus {
+    outline: none;
+    border-color: var(--green);
+  }
+  .btn {
+    padding: 15px 22px;
+    background: var(--green);
+    color: var(--black);
+    border: none;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: transform 0.15s, box-shadow 0.2s;
+  }
+  .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(57, 255, 20, 0.3);
+  }
+  .note {
+    margin-top: 12px;
+    font-size: 0.8rem;
+    color: #6e6e6e;
+    min-height: 1.2em;
+    text-align: left;
+    transition: color 0.2s;
+  }
+  .note.ok { color: var(--green); }
+  .note.err { color: var(--orange); }
+
+  /* ---- What's coming ---- */
+  .coming {
+    padding: 72px 0 96px;
+    border-top: 1px solid var(--line);
+  }
+  .coming h2 {
+    text-align: center;
+    font-size: clamp(1.5rem, 4vw, 2.1rem);
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .coming .lead {
+    text-align: center;
+    color: var(--muted);
+    max-width: 560px;
+    margin: 0 auto 48px;
+  }
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+  }
+  .card {
+    padding: 28px 24px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    transition: transform 0.2s, border-color 0.2s;
+  }
+  .card:hover { transform: translateY(-4px); border-color: var(--orange); }
+  .card h3 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+  .card:nth-child(1) h3 { color: var(--orange); }
+  .card:nth-child(2) h3 { color: var(--green); }
+  .card:nth-child(3) h3 { color: var(--white); }
+  .card p { color: var(--muted); font-size: 0.92rem; }
+
+  /* ---- Footer ---- */
+  footer {
+    border-top: 1px solid var(--line);
+    padding: 36px 24px;
+    text-align: center;
+  }
+  .manifesto {
+    font-family: 'Oswald', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 0.95rem;
+    color: var(--white);
+  }
+  .manifesto .o { color: var(--orange); }
+  .manifesto .g { color: var(--green); }
+  .copyright {
+    margin-top: 14px;
+    font-size: 0.78rem;
+    color: #5a5a5a;
+  }
+
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.35; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before { animation: none !important; }
+    html { scroll-behavior: auto; }
+  }
+  @media (max-width: 620px) {
+    form { flex-direction: column; }
+    .cards { grid-template-columns: 1fr; }
+    .note { text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+  <section class="hero">
+    <img class="logo" src="logo.png" alt="Ride Safe — Moto Gear & Accessories" />
+
+    <span class="badge"><span class="dot"></span>Coming Soon</span>
+
+    <h1>Built for the <span class="hl">Long Haul.</span></h1>
+
+    <p class="sub">
+      A rider-first, multi-brand shop for motorcycle luggage, protection and
+      touring essentials — selected with real riding experience behind every recommendation.
+    </p>
+
+    <div class="signup">
+      <span class="eyebrow">Be first on the road</span>
+      <form id="notify" novalidate>
+        <input type="email" id="email" placeholder="your@email.com" aria-label="Email address" autocomplete="email" />
+        <button class="btn" type="submit">Notify Me</button>
+      </form>
+      <p class="note" id="note">We'll email you once when we open. No spam.</p>
+    </div>
+  </section>
+
+  <section class="coming">
+    <div class="wrap">
+      <h2>Gear up for the journey.</h2>
+      <p class="lead">Three things we're building the shop around — the gear that earns its place on your bike.</p>
+      <div class="cards">
+        <div class="card">
+          <h3>Carry More</h3>
+          <p>Luggage systems built to keep your gear secure through long days and rough roads.</p>
+        </div>
+        <div class="card">
+          <h3>Protect Yourself</h3>
+          <p>Practical riding protection designed for the miles you actually ride.</p>
+        </div>
+        <div class="card">
+          <h3>Stay Ready</h3>
+          <p>Touring essentials for the unexpected parts of the journey.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p class="manifesto">Ride for the adventure. <span class="o">Ride prepared.</span> <span class="g">Ride Safe.</span></p>
+    <p class="copyright">© <span id="year"></span> Ride Safe · Moto Gear &amp; Accessories · 13 years on the road</p>
+  </footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Email validation — standard, deliberately permissive. Real signup wires to a
+  // provider later; for now we validate + store locally so the form isn't a dead end.
+  function isValidEmail(v) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim());
+  }
+
+  const form = document.getElementById('notify');
+  const email = document.getElementById('email');
+  const note = document.getElementById('note');
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    const v = email.value;
+    if (!isValidEmail(v)) {
+      note.textContent = 'Enter a valid email and we’ll keep you posted.';
+      note.className = 'note err';
+      email.focus();
+      return;
+    }
+    // ponytail: no backend yet — stash locally, swap for a real endpoint at launch.
+    try {
+      const list = JSON.parse(localStorage.getItem('ridesafe_notify') || '[]');
+      if (!list.includes(v.trim().toLowerCase())) list.push(v.trim().toLowerCase());
+      localStorage.setItem('ridesafe_notify', JSON.stringify(list));
+    } catch (_) {}
+    form.reset();
+    note.textContent = 'You’re on the list. We’ll email you when the shop opens.';
+    note.className = 'note ok';
+  });
+
+  // --- self-check (runs only with ?selftest in the URL) ---
+  if (location.search.includes('selftest')) {
+    const ok = ['a@b.co', 'rider.one@ride-safe.in'].every(isValidEmail);
+    const bad = ['', 'nope', 'a@b', 'a b@c.com', '@x.com'].every(v => !isValidEmail(v));
+    console.assert(ok && bad, 'email validation self-check FAILED');
+    console.log('selftest:', ok && bad ? 'PASS' : 'FAIL');
+  }
+</script>
+</body>
+</html>
